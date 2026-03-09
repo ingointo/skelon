@@ -23,6 +23,9 @@
         "test": "vitest run",
         "test:watch": "vitest"
     },
+    "devDependencies": {
+        "vitest": "^1.6.0"
+    },
     "keywords": [
         "skeleton",
         "skeleton-loader",

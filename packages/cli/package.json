@@ -27,6 +27,9 @@
     "dependencies": {
         "commander": "^12.0.0"
     },
+    "devDependencies": {
+        "@skelon/core": "workspace:*"
+    },
     "keywords": [
         "cli",
         "developer-tools",
