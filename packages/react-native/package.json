@@ -28,8 +28,26 @@
     "dependencies": {
         "@skelon/core": "workspace:*"
     },
-    "devDependencies": {
-        "@types/react": "^18.0.0",
-        "@types/react-native": "^0.72.0"
-    }
+    "keywords": [
+        "react-native",
+        "react-native-skeleton",
+        "mobile-loading-ui",
+        "react-native-ui",
+        "expo",
+        "expo-skeleton",
+        "native-skeleton-loader",
+        "ios-skeleton",
+        "android-skeleton",
+        "skelon"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ingointo/skelon.git",
+        "directory": "packages/react-native"
+    },
+    "homepage": "https://github.com/ingointo/skelon/tree/main/packages/react-native#readme",
+    "bugs": {
+        "url": "https://github.com/ingointo/skelon/issues"
+    },
+    "license": "MIT"
 }

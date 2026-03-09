@@ -28,8 +28,28 @@
     "dependencies": {
         "@skelon/core": "workspace:*"
     },
-    "devDependencies": {
-        "@types/react": "^18.0.0",
-        "@types/react-dom": "^18.0.0"
-    }
+    "keywords": [
+        "react",
+        "react-skeleton",
+        "react-loading",
+        "react-ui",
+        "react-component",
+        "react-skeleton-loader",
+        "nextjs-skeleton",
+        "react-loading-placeholder",
+        "react-loading-ui",
+        "react-loading-state",
+        "loading-skeleton",
+        "skelon"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ingointo/skelon.git",
+        "directory": "packages/react"
+    },
+    "homepage": "https://github.com/ingointo/skelon/tree/main/packages/react#readme",
+    "bugs": {
+        "url": "https://github.com/ingointo/skelon/issues"
+    },
+    "license": "MIT"
 }

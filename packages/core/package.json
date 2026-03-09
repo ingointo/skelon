@@ -23,9 +23,28 @@
         "test": "vitest run",
         "test:watch": "vitest"
     },
-    "peerDependencies": {},
-    "dependencies": {},
-    "devDependencies": {
-        "vitest": "^1.6.0"
-    }
+    "keywords": [
+        "skeleton",
+        "skeleton-loader",
+        "ui-loading",
+        "skeleton-ui",
+        "auto-skeleton",
+        "skeleton-generator",
+        "skeleton-screen",
+        "loading-placeholder",
+        "ui-skeleton",
+        "skelon",
+        "layout-inference",
+        "geometry-engine"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ingointo/skelon.git",
+        "directory": "packages/core"
+    },
+    "homepage": "https://github.com/ingointo/skelon/tree/main/packages/core#readme",
+    "bugs": {
+        "url": "https://github.com/ingointo/skelon/issues"
+    },
+    "license": "MIT"
 }
