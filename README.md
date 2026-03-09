@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./skelon_hero_banner_1773066214275.png" alt="Skelon Hero Banner" width="100%" />
+  <img src="./skelon_hero_banner.png" alt="Skelon Hero Banner" width="100%" />
 
   <h1>⚡ Skelon</h1>
   <p><strong>The Intelligent Layout Inference Engine for Seamless Skeleton Loading</strong></p>
