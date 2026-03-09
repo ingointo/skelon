@@ -102,6 +102,140 @@ While Skelon is "zero-config," you can easily override detected types for specif
 
 ---
 
+## ⚠️ Layout Detection Rules & Troubleshooting
+
+Skelon automatically infers skeleton layouts by analyzing the **rendered DOM geometry** of your components.
+
+In most cases this works with **zero configuration**, but some layouts may require small adjustments.
+
+If a skeleton does not appear correctly, check the following guidelines.
+
+---
+
+### 🧑 Avatar Not Detected
+
+Skelon detects avatars by analyzing **circular geometry**.
+
+For reliable avatar detection, the element should have:
+
+- Equal **width and height**
+- A **border-radius ≥ 50%**
+- A visible layout size (not `auto`)
+
+✅ Recommended
+
+```jsx
+<img
+  src="/avatar.png"
+  style={{
+    width: 80,
+    height: 80,
+    borderRadius: "50%"
+  }}
+/>
+```
+
+⚠️ Avoid
+
+```jsx
+<img
+  src="/avatar.png"
+  style={{
+    width: 80,
+    borderRadius: "50%"
+  }}
+/>
+```
+
+Without an explicit `height`, browsers may compute it dynamically, which can prevent Skelon from correctly detecting an avatar element.
+
+---
+
+### 📝 Text Block Detection
+
+Skelon detects text blocks using layout properties such as:
+
+- `font-size`
+- `line-height`
+- container width
+
+Example:
+
+```html
+<p>This is a text block that Skelon will convert into skeleton lines.</p>
+```
+
+Ensure the element:
+
+- is visible
+- contains text content
+- is not collapsed by CSS
+
+---
+
+### 🔘 Button Detection
+
+Skelon automatically detects interactive elements such as:
+
+```
+button
+input
+select
+```
+
+Example:
+
+```html
+<button>Follow</button>
+```
+
+---
+
+### 🧩 Complex Layouts
+
+Skelon measures layout using:
+
+```
+getBoundingClientRect()
+```
+
+If elements are hidden or not measurable, skeleton inference may fail.
+
+Avoid:
+
+```
+display: none
+height: 0
+collapsed containers
+```
+
+Ensure elements are **visible and properly sized**.
+
+---
+
+### 🛠 Manual Override (Always Works)
+
+If automatic detection fails, you can explicitly define the skeleton type.
+
+```html
+<div data-skelon-type="avatar"></div>
+<div data-skelon-type="text"></div>
+<div data-skelon-type="image"></div>
+<div data-skelon-type="button"></div>
+```
+
+This forces Skelon to render the correct skeleton shape.
+
+---
+
+### 💡 Best Practice
+
+Skelon works best when UI elements have **clear layout geometry** (explicit width, height, or flex constraints).
+
+This allows the inference engine to generate **accurate skeleton placeholders** with zero layout shift.
+
+---
+
 ## 🧠 Deep Dive: The Core Engine
 
 Skelon operates using a sophisticated transformation pipeline:
