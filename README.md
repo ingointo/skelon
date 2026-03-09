@@ -1,75 +1,69 @@
 <div align="center">
+  <img src="./skelon_hero_banner_1773066214275.png" alt="Skelon Hero Banner" width="100%" />
+
   <h1>⚡ Skelon</h1>
   <p><strong>The Intelligent Skeleton Loading Engine for Modern JavaScript</strong></p>
   
   <p>
-    <a href="https://www.npmjs.com/package/@skelon/core"><img src="https://img.shields.io/npm/v/@skelon/core.svg?style=flat-square" alt="NPM Version" /></a>
-    <a href="https://github.com/yourusername/skelon/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/@skelon/core.svg?style=flat-square" alt="License" /></a>
-    <a href="https://www.npmjs.com/package/@skelon/core"><img src="https://img.shields.io/npm/dm/@skelon/core.svg?style=flat-square" alt="Downloads" /></a>
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" alt="PRs Welcome" />
+    <a href="https://www.npmjs.com/package/@skelon/core"><img src="https://img.shields.io/npm/v/@skelon/core.svg?style=for-the-badge&color=blueviolet" alt="NPM Version" /></a>
+    <a href="https://github.com/ingointo/skelon/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/ingointo/skelon/ci.yml?branch=main&style=for-the-badge" alt="Build Status" /></a>
+    <a href="https://www.npmjs.com/package/@skelon/core"><img src="https://img.shields.io/npm/dm/@skelon/core.svg?style=for-the-badge&color=blue" alt="Downloads" /></a>
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge" alt="PRs Welcome" />
   </p>
 </div>
 
 ---
 
+### Why settle for manual skeletons? 🕵️‍♂️
 Skelon is a next-generation skeleton loading engine that **automatically generates pixel-perfect loading placeholders by analyzing your real UI layout structures**. 
 
-Stop wasting hours manually writing, maintaining, and duplicating placeholder components (e.g., `<Skeleton width={100} height={20} />`). Just wrap your components in `<Skelon>`, and let the engine intelligently infer your layout.
+Stop wasting hours manually writing, maintaining, and duplicating placeholder components like `<Skeleton width={100} height={20} />`. Just wrap your components in `<Skelon>`, and let the engine intelligently infer your layout.
 
-## 🌟 Why Skelon?
+## 🌟 Key Features
 
-* 🤖 **Zero Configuration**: Automatically detects avatars, buttons, text blocks, and card layouts.
-* ⚡️ **Blazing Fast**: Advanced layout clustering and memoization ensure 60fps performance even on massive trees.
-* 📦 **Framework Agnostic Core**: Built to run anywhere. Supports React (Web), React Native, Expo out of the box.
-* 🎨 **Beautiful Defaults**: Smooth, GPU-accelerated shimmer animations that adapt to your container constraints.
-* 🛠 **CLI Powered**: Pre-generate layout templates statically for massive enterprise apps using `@skelon/cli`.
+* 🤖 **Intelligent Inference**: Automatically detects avatars, buttons, text blocks, and card layouts using structural heuristics.
+* ⚡️ **High Performance**: Advanced layout clustering and memoization ensure 60fps performance even on massive trees.
+* 📦 **Framework Agnostic Core**: Built to run anywhere. Supports React (Web), React Native, and Expo out of the box.
+* 🎨 **Premium Shimmer**: GPU-accelerated, glassmorphism-inspired shimmer animations.
+* 🛠 **CLI Toolkit**: statically generate layout presets for enterprise-scale performance with `@skelon/cli`.
 
 ---
 
 ## 📦 Installation
 
-Skelon is highly modular. Install the core engine and the adapter for your framework:
+Skelon is modular. Install the core engine and the adapter for your preferred framework:
 
-### For React & Next.js (Web)
-```bash
-npm install @skelon/core @skelon/react
-# or yarn add / pnpm add
-```
-
-### For React Native & Expo
-```bash
-npm install @skelon/core @skelon/react-native
-```
+| Package | Purpose | Install Command |
+| :--- | :--- | :--- |
+| **@skelon/core** | The Brain (Required) | `pnpm add @skelon/core` |
+| **@skelon/react** | Web / Next.js Adapter | `pnpm add @skelon/react` |
+| **@skelon/react-native** | RN / Expo Adapter | `pnpm add @skelon/react-native` |
+| **@skelon/cli** | Static Generation Tool | `pnpm add -D @skelon/cli` |
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (React)
 
-Wrap your existing layout with `<Skelon>` and pass your `loading` state. While loading is true, Skelon measures the underlying nodes and seamlessly overlays a perfectly matching skeleton hierarchy.
-
-### React / Web Example
+Wrap your existing layout with `<Skelon>` and pass your `loading` state. While `loading` is true, Skelon measures the underlying nodes and overlays a matching skeleton hierarchy.
 
 ```tsx
-import React from 'react';
 import { Skelon } from '@skelon/react';
 
-export function UserProfile({ user, isLoading }) {
+export function ProfileCard({ user, isLoading }) {
   return (
     <Skelon loading={isLoading}>
-      <div className="flex items-center space-x-4 p-4 border rounded-xl">
-        {/* Intelligently detected as 'avatar' -> renders a perfect circle skeleton */}
-        <img className="w-16 h-16 rounded-full" src={user?.avatar} alt="Profile" />
+      <div className="profile-container">
+        {/* Detected as 'avatar' -> Perfect circle skeleton */}
+        <img className="avatar" src={user?.avatar} />
         
-        <div>
-          {/* Intelligently detected as 'text-lines' -> renders multi-line text skeletons */}
-          <h2 className="text-xl font-bold">{user?.name || "Placeholder Name"}</h2>
-          <p className="text-gray-500">{user?.role || "Software Engineer at Acme Corp"}</p>
+        <div className="info">
+          {/* Detected as 'text-lines' -> Multi-line text skeletons */}
+          <h3>{user?.name}</h3>
+          <p>{user?.bio}</p>
         </div>
         
-        {/* Intelligently detected as 'button' -> renders a rounded rect skeleton */}
-        <button className="px-4 py-2 bg-blue-500 text-white rounded-lg">
-          Follow
-        </button>
+        {/* Detected as 'button' -> Rounded rect skeleton */}
+        <button>Follow</button>
       </div>
     </Skelon>
   );
@@ -78,64 +72,55 @@ export function UserProfile({ user, isLoading }) {
 
 ---
 
-## 🧠 How the Intelligent Engine Works
+## 🧠 The 10-Stage Pipeline
 
-Skelon isn't just a UI component; it's a structural analysis engine. Here is what happens under the hood when you pass `loading={true}`:
+Skelon isn't just a UI component; it's a structural analysis engine.
 
 ```mermaid
-graph TD
-    A[Raw UI Tree] -->|Tree Extraction| B(Geometry Mapping)
-    B -->|Calculate Spatial Data| C(Semantic Classification)
-    C -->|Detect: Avatar, Button, Text| D(Layout Clustering)
-    D -->|Group Repeating Patterns| E(Shape Inference)
-    E -->|Map to UI Primitives| F(Layout Synthesis)
-    F -->|Render| G[Perfect Skeleton UI]
+graph LR
+    A[UI Tree] --> B[Extraction]
+    B --> C[Geometry Mapping]
+    C --> D[Classification]
+    D --> E[Clustering]
+    E --> F[Inference]
+    F --> G[Synthesis]
+    G --> H[Final Overlay]
+    style H fill:#7d5fff,stroke:#fff,stroke-width:2px
 ```
 
-1. **Extraction & Geometry:** Measures exact dimensions, padding, rounded corners, and flexbox configurations.
-2. **Classification heuristics:** For instance, an element with `border-radius >= width / 2` is classified as an `avatar`. A text node with no children calculates its string length to estimate `text-lines`.
-3. **Synthesis & Shimmer:** A lightweight, parallel Skeleton Tree is created and animated using CSS background gradients or React Native `Animated` loops.
+1. **Extraction:** Recursively traverses the DOM/Component tree.
+2. **Geometry:** Measures exact positions relative to parents to prevent layout drift.
+3. **Classification:** Heuristics detect semantic roles (e.g., `border-radius >= 50%` = Avatar).
+4. **Inference:** Calculates how many lines of text should be rendered based on container height.
+5. **Synthesis:** Generates a lightweight parallel tree for the shimmer overlay.
 
 ---
 
-## ⚡ Skelon CLI Toolkit
+## ⚡ Skelon CLI
 
-For enterprise monorepos, running layout analysis at runtime might be overkill. Enter the Skelon CLI.
-
-Scan your codebase to detect repeating layout patterns (e.g., identical List Items) and statically generate reusable Skeleton Preset files.
+Bypass runtime measurements in production by pre-generating static presets.
 
 ```bash
-# Scan your project for structural UI habits
-npx @skelon/cli scan --dir ./src/components
+# Scan your project components
+npx skelon scan --dir ./src/components
 
 # Generate a static preset file
-npx @skelon/cli generate --out ./src/skelon-presets.ts
+npx skelon generate --out ./src/skelon-presets.ts
 ```
-
-Then, feed the presets into your provider to bypass runtime DOM measurement entirely!
 
 ---
 
 ## 🤝 Contributing
 
-We want Skelon to be the standard across the entire JavaScript ecosystem. We are actively looking for contributors to help build adapters for:
-- [ ] Vue / Nuxt
-- [ ] Svelte / SvelteKit
-- [ ] SolidJS
+We are building the future of loading states. Contributions are welcome for Vue, Svelte, and SolidJS adapters!
 
-### Local Development Setup
-
-Skelon is a monorepo powered by `pnpm` and `turborepo` (via `tsup`).
-
-```bash
-git clone https://github.com/yourusername/skelon.git
-cd skelon
-pnpm install
-pnpm build
-```
+1. Clone: `git clone https://github.com/ingointo/skelon.git`
+2. Install: `pnpm install`
+3. Build: `pnpm build`
+4. Test: `pnpm test`
 
 ---
 
 ## 📄 License
 
-MIT Copyright (c) 2026. Made with ❤️ for the open-source community.
+MIT © 2026 [ingointo](https://github.com/ingointo). Made for the community.
